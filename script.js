@@ -16,3 +16,12 @@ function adicionarQuadradoColorido() {
 }
 
 btnCor.addEventListener("click", adicionarQuadradoColorido);
+
+
+// elementos do menu mobile
+const btnMenu = document.getElementById('btn-menu');
+const menuAcoes = document.getElementById('menu-acoes');
+
+btnMenu.addEventListener('click', function() {
+    menuAcoes.classList.toggle('ativo');
+});

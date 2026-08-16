@@ -1,60 +1,180 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
-
+/* RESET BÁSICO E TIPOGRAFIA */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-  font-family: "Inter", sans-serif; 
-  background-color: #f9f9f9;
+  background-color: #f4f4f9;
+  color: #333;
 }
 
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 2.5rem;
-  background-color: #1a1a1a; 
+  background-color: #1a1a1a;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
-
+  padding: 1.2rem 2.5rem;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .navbar h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.6rem;
   letter-spacing: -0.5px;
 }
 
-.navbar button {
+/* BOTÕES GERAIS E INTERAÇÕES */
+button {
   background-color: #ffffff;
   color: #1a1a1a;
   border: none;
   padding: 0.6rem 1.2rem;
-  margin-left: 1rem;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  font-family: inherit;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+/* LAYOUT DOS BOTÕES (DESKTOP) */
+.acoes {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.grupo-cor {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Estilização limpa para o seletor de cor */
+input[type="color"] {
+  width: 42px;
+  height: 42px;
+  border: none;
+  padding: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
+
+/* GRID PRINCIPAL (ARTBOARD) */
 .artboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, 200px);
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2.5rem;
 }
 
 .artboard-item {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 15px;
-  background-color: #5bc3ff;
   height: 200px;
   width: 200px;
-  margin: 10px;
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* MENU HAMBÚRGUER E RESPONSIVIDADE */
+/* Oculta o botão hambúrguer no computador */
+.menu-hamburguer {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.menu-hamburguer .linha {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .menu-hamburguer {
+    display: flex;
+  }
+
+  /* Transforma a barra lateral em um menu flutuante */
+  .acoes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+    /* Configuração inicial oculta */
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Classe que será adicionada pelo JavaScript para mostrar o menu */
+  .acoes.ativo {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  /* Ajustes para os botões ocuparem a tela toda no celular */
+  .acoes button {
+    width: 100%;
+  }
+
+  .grupo-cor {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .grupo-cor button {
+    flex: 1; /* Faz o botão esticar para preencher o espaço restante */
+  }
+
+  /* Ajustes nos quadrados de cor para preencher melhor o espaço no celular */
+  @media (max-width: 480px) {
+    .artboard-grid {
+      grid-template-columns: repeat(auto-fit, 140px);
+
+      gap: 1rem;
+      padding: 1.5rem 1rem;
+    }
+
+    .artboard-item {
+      width: 140px;
+      height: 140px;
+    }
+  }
 }
