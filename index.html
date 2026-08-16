@@ -9,19 +9,13 @@
   <body>
     <header class="navbar">
       <h1>ArtBoard</h1>
-      <button>Adicionar Imagem</button>
-      <button>Adicionar Cor</button>
+      <div class="acoes">
+        <button id="btn-imagem">Adicionar Imagem</button>
+        <button id="btn-cor">Adicionar Cor</button>
+      </div>
     </header>
 
-    <div class="artboard-grid">
-      <div class="artboard-item"></div>
-      <div class="artboard-item"></div>
-      <div class="artboard-item"></div>
-      <div class="artboard-item"></div>
-      <div class="artboard-item"></div>
-      <div class="artboard-item"></div>
-      <div class="artboard-item"></div>
-    </div>
+    <div id="board" class="artboard-grid"></div>
 
     <script src="script.js"></script>
   </body>
