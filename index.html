@@ -9,9 +9,18 @@
   <body>
     <header class="navbar">
       <h1>ArtBoard</h1>
-      <div class="acoes">
+
+      <!-- Botão do Menu Hambúrguer (invisível no desktop) -->
+      <button id="btn-menu" class="menu-hamburguer">
+        <span class="linha"></span>
+        <span class="linha"></span>
+        <span class="linha"></span>
+      </button>
+
+      <div id="menu-acoes" class="acoes">
         <button id="btn-imagem">Adicionar Imagem</button>
         <button id="btn-cor">Adicionar Cor</button>
+        <input type="color" id="input-cor" value="#FF5733">
       </div>
     </header>
 
